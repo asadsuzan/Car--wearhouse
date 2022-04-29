@@ -1,10 +1,16 @@
 import React from "react";
+import "./Home.css";
 
 const Home = () => {
   return (
-    <div>
-      <h1>home</h1>
-    </div>
+    <section>
+      {/* banner here */}
+      <div className="h-banner d-flex justify-content-center align-items-center ">
+        <h1 className="h-banner-title display-3 text-uppercase text-center text-light">
+          the autostarts wearhouse <br /> limited{" "}
+        </h1>
+      </div>
+    </section>
   );
 };
 

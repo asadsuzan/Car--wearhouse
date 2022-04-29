@@ -1,0 +1,12 @@
+.h-banner{
+    background: url(../../imges/banner.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 100vw;
+}
+.h-banner-title{
+    font-weight: 900 !important;
+    text-shadow: 2px 5px 10px rgba(206,89,55,1) !important;
+}
