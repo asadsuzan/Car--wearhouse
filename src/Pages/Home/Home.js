@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 
 const Home = () => {
+  const [items, setItems] = useState([]);
+  console.log(items);
+
+  // load items from server
+  useEffect(() => {
+    fetch("http://localhost:5000/cars/home")
+      .then((res) => res.json())
+      .then((data) => setItems(data));
+  }, []);
+
   return (
     <section>
       {/* banner here */}
@@ -10,6 +20,7 @@ const Home = () => {
           the autostarts wearhouse <br /> limited{" "}
         </h1>
       </div>
+      {/* inventoy items here */}
     </section>
   );
 };
