@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { GrUpdate } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const Home = () => {
   const [items, setItems] = useState([]);
-  console.log(items);
+  const navigate = useNavigate();
 
   // load items from server
   useEffect(() => {
@@ -26,9 +27,9 @@ const Home = () => {
         <h3 className="my-5">Recently Listed Vehicles</h3>
         <div className="inventory-items ">
           {items.map((item) => {
-            const { name, img, des, price, quantity, supplier } = item;
+            const { name, img, des, price, quantity, supplier, _id } = item;
             return (
-              <div className="row mb-5 item">
+              <div className="row mb-5 item" key={_id}>
                 <div className="col-lg-4 col-md-4 col-12">
                   {/* item img here */}
                   <img src={img} alt={name} className="img-fluid" />
@@ -46,7 +47,10 @@ const Home = () => {
                     </div>
                     <div className="col-lg-4 col-md-4 col-12">
                       <h4 className="item-price">${price}</h4>
-                      <button className="update-btn px-3  py-2">
+                      <button
+                        onClick={() => navigate(`/inventory/${_id}`)}
+                        className="update-btn px-3  py-2"
+                      >
                         <GrUpdate className="text-light" />
                         <span>Update</span>
                       </button>

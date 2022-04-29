@@ -22,7 +22,7 @@
 }
 .item::before{
     content: '';
-    height: 5px;
+    height: 1px;
     width: 100%;
     position: absolute;
     left: 0;
