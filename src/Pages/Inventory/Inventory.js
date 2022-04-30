@@ -6,13 +6,65 @@ import "./Inventory.css";
 const Inventory = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
+  const [itemQunatity, setIemQunatity] = useState();
+
+  // increase quantity
+  const handleRestocks = (e) => {
+    e.preventDefault();
+    const quantity = e.target.quantity.value;
+    const newQuantity = parseInt(quantity) + parseInt(itemQunatity);
+    setIemQunatity(newQuantity);
+
+    // test
+    // const url = `http://localhost:5000/cars/home/${id}`;
+    // fetch(url, {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     id: id,
+    //     name: item.name,
+    //     price: item.price,
+    //     des: item.des,
+    //     quantity: 0,
+    //     supplier: item.supplier,
+    //     img: item.img,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data));
+  };
+  // update items quntity
+  useEffect(() => {
+    const url = `http://localhost:5000/cars/home/${id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify({
+        name: item.name,
+        price: item.price,
+        des: item.des,
+        quantity: itemQunatity,
+        supplier: item.supplier,
+        img: item.img,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, [id, itemQunatity, item]);
 
   //   load items by id
   useEffect(() => {
     const url = `http://localhost:5000/cars/home/${id}`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setItem(data));
+      .then((data) => {
+        setItem(data);
+        setIemQunatity(data.quantity);
+      });
   }, [id]);
   return (
     <section className="singl-item my-5">
@@ -24,12 +76,12 @@ const Inventory = () => {
         {/* for item info */}
         <div className="row mt-5">
           <div className="col-lg-8 col-md-8 col-12">
-            <h4 className="item-name">{item.name}</h4>
-            <h4 className="item-price">${item.price}</h4>
             <p className="item-id">
               <GrView />
-              {item._id}
+              <b className="px-1"> {item._id}</b>
             </p>
+            <h4 className="item-name">{item.name}</h4>
+            <h4 className="item-price">${item.price}</h4>
             <p>
               <b>Supplier: {item.supplier}</b>
             </p>
@@ -37,10 +89,14 @@ const Inventory = () => {
           </div>
           <div className="col-lg-4 col-md-4 col-12">
             <h3>
-              <i>Stokes: {item.quantity}</i>
+              <i>Stokes: {itemQunatity}</i>
             </h3>
             <button className="deleverd-btn">Deleverd</button>
-            <form className="d-flex flex-column mt-3" style={{ gap: "10px" }}>
+            <form
+              onSubmit={handleRestocks}
+              className="d-flex flex-column mt-3"
+              style={{ gap: "10px" }}
+            >
               <div>
                 <label htmlFor="quantity" className="text-capitalize">
                   restock the item
@@ -49,7 +105,7 @@ const Inventory = () => {
                   type="number"
                   name="quantity"
                   required
-                  className="form-control"
+                  className="form-control shadow-lg"
                 />
               </div>
               <button type="submit" className="deleverd-btn">
