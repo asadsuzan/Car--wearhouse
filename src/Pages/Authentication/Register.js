@@ -4,14 +4,21 @@ import logo from "../../imges/logo5.png";
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 // import { BsArrowRepeat } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firbaseConfig";
 import {
+  useAuthState,
   useCreateUserWithEmailAndPassword,
   useSendEmailVerification,
 } from "react-firebase-hooks/auth";
+import { Spinner } from "react-bootstrap";
 
 const Register = () => {
+  let navigate = useNavigate();
+  let location = useLocation();
+  const [logedUser] = useAuthState(auth);
+  let from = location.state?.from?.pathname || "/";
+
   // FOR REGISTRATIONS
   const [sendEmailVerification] = useSendEmailVerification(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -24,6 +31,22 @@ const Register = () => {
     // const confirmPassword = e.target.repassword.value;
     createUserWithEmailAndPassword(email, password);
   };
+
+  // loading spiner
+  if (loading) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
+        <Spinner animation="grow" variant="warning" />
+      </div>
+    );
+  }
+  // navigation
+  if (logedUser) {
+    navigate(from, { replace: true });
+  }
 
   return (
     <section className="authentication">

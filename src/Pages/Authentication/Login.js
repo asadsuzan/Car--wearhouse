@@ -2,28 +2,42 @@ import React from "react";
 import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import logo from "../../imges/logo5.png";
-import { Link, useNavigate } from "react-router-dom";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import auth from "../../firbaseConfig";
-import { async } from "@firebase/util";
-
+import { Spinner } from "react-bootstrap";
 const Login = () => {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
+  let location = useLocation();
+  const [logedUser] = useAuthState(auth);
+  let from = location.state?.from?.pathname || "/";
+
   // for login
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-
   const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     await signInWithEmailAndPassword(email, password);
   };
+  // loading spiner
   if (loading) {
-    return <p>loding</p>;
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
+        <Spinner animation="grow" variant="warning" />
+      </div>
+    );
   }
-  if (user) {
-    navigate("/");
+  // navigation
+  if (logedUser) {
+    navigate(from, { replace: true });
   }
 
   return (
