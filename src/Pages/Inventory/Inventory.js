@@ -23,7 +23,7 @@ const Inventory = () => {
     e.preventDefault();
     const quantity = e.target.quantity.value;
     const newQuantity = parseInt(quantity) + parseInt(itemQunatity);
-    if (newQuantity <= 0) {
+    if (quantity <= 0) {
       alert("Please Enter Valid quantity");
       e.target.reset();
       return;
