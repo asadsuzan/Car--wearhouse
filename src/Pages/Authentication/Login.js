@@ -2,6 +2,7 @@ import React from "react";
 import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import logo from "../../imges/logo5.png";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useAuthState,
@@ -42,6 +43,13 @@ const Login = () => {
 
   return (
     <section className="authentication">
+      <button
+        onClick={() => navigate("/")}
+        className="naviget-btn px-5 fs-1 "
+        title="Back to home"
+      >
+        <IoArrowBackCircleOutline />
+      </button>
       {/* titlle here */}
       <div className="authentication-title d-flex align-items-center justify-content-center ">
         <div>

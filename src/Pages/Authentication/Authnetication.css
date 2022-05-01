@@ -40,3 +40,12 @@
     background-color: orangered;
     color: white;
 }
+.naviget-btn{
+    position: absolute;
+    top: 5rem;
+    left: 1rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+}

@@ -42,7 +42,8 @@ const Header = () => {
               {user ? (
                 <button
                   onClick={() => signOut(auth)}
-                  className="btn btn-sm  btn-info py-0"
+                  className="shadow-lg border-0 text-uppercase text-light fw-bold"
+                  style={{ background: "#992900" }}
                 >
                   Signout
                 </button>
