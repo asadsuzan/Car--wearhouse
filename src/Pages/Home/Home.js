@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <section>
       {/* banner here */}
-      <div className="h-banner d-flex justify-content-center align-items-center ">
+      <div className="h-banner container-fluid d-flex justify-content-center align-items-center ">
         <h1 className="h-banner-title display-3 text-uppercase text-center text-light">
           the autostarts wearhouse <br /> limited{" "}
         </h1>
@@ -61,6 +61,14 @@ const Home = () => {
             );
           })}
         </div>
+      </div>
+      <div className="text-center">
+        <button
+          onClick={() => navigate("/inventory")}
+          className="h-navigate-btn p-2"
+        >
+          Manage Inventories
+        </button>
       </div>
     </section>
   );

@@ -51,6 +51,12 @@
 }.update-btn:hover{
     background-color: #dc3f15;
 }
+.h-navigate-btn{
+    border: none;
+    outline: none;
+    background-color: orangered;
+    color: white;
+}
 
 @keyframes slides {
     0%{
