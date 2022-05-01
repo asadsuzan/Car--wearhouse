@@ -4,8 +4,19 @@ import logo from "../../imges/logo5.png";
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { BsArrowRepeat } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Register = () => {
+  // FOR REGISTRATIONS
+  const handleRegistration = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    // const confirmPassword = e.target.repassword.value;
+    console.log({ name, email, password });
+  };
+
   return (
     <section className="authentication">
       {/* titlle here */}
@@ -18,9 +29,9 @@ const Register = () => {
       {/* register form here */}
       <div className="authentication-form w-75 mx-auto">
         <h3 className="text-center text-light fs-1 my-5">
-          <i>Register</i>
+          <i>REGISTER</i>
         </h3>
-        <form className=" w-75 mx-auto ">
+        <form onSubmit={handleRegistration} className=" w-75 mx-auto ">
           {/* input groups here */}
           <div className="input-group d-flex align-items-center">
             <span className="icons">
@@ -61,7 +72,7 @@ const Register = () => {
             />
           </div>
           {/* input groups here */}
-          <div className="input-group d-flex align-items-center">
+          {/* <div className="input-group d-flex align-items-center">
             <span className="icons">
               <BsArrowRepeat />
             </span>
@@ -72,7 +83,7 @@ const Register = () => {
               required
               className=""
             />
-          </div>
+          </div> */}
           <span className="text-danger fs-4 mt-5">Error</span>
           {/* input groups here */}
           <div className="input-group d-flex align-items-center">
@@ -82,6 +93,10 @@ const Register = () => {
               required
               className="submit-btn"
             />
+          </div>
+          {/* navigate to login if have an accout */}
+          <div className="text-light">
+            Allready Have an Account? <Link to={"/login"}>LOGIN</Link>
           </div>
         </form>
       </div>
