@@ -3,18 +3,25 @@ import "./Authnetication.css";
 import logo from "../../imges/logo5.png";
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { BsArrowRepeat } from "react-icons/bs";
+// import { BsArrowRepeat } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import auth from "../../firbaseConfig";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 const Register = () => {
   // FOR REGISTRATIONS
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
   const handleRegistration = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     // const confirmPassword = e.target.repassword.value;
-    console.log({ name, email, password });
+    createUserWithEmailAndPassword(email, password);
+    if (user) {
+      console.log(user);
+    }
   };
 
   return (
@@ -84,7 +91,9 @@ const Register = () => {
               className=""
             />
           </div> */}
-          <span className="text-danger fs-4 mt-5">Error</span>
+          <span className="text-danger fs-4 mt-5">
+            {error ? error.message : ""}
+          </span>
           {/* input groups here */}
           <div className="input-group d-flex align-items-center">
             <input

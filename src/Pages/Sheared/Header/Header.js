@@ -1,9 +1,13 @@
+import { signOut } from "firebase/auth";
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../../firbaseConfig";
 import logo from "../../../imges/logo.png";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
   return (
     <div>
       <Navbar expand="lg" className="bg-orangered">
@@ -20,9 +24,33 @@ const Header = () => {
               <Nav.Link as={Link} to="/inventory" className="text-light">
                 Manage Inventory
               </Nav.Link>
-              <Nav.Link as={Link} to="/login" className="text-light">
-                Login
-              </Nav.Link>
+              {/* conditionaly show routes */}
+              {user ? (
+                <Nav.Link as={Link} to="/login" className="text-light">
+                  My Items
+                </Nav.Link>
+              ) : (
+                ""
+              )}
+              {user ? (
+                <Nav.Link as={Link} to="/login" className="text-light">
+                  Add Items
+                </Nav.Link>
+              ) : (
+                ""
+              )}
+              {user ? (
+                <button
+                  onClick={() => signOut(auth)}
+                  className="btn btn-sm  btn-info py-0"
+                >
+                  Signout
+                </button>
+              ) : (
+                <Nav.Link as={Link} to="/login" className="text-light">
+                  Login
+                </Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
