@@ -6,12 +6,16 @@ import { MdEmail } from "react-icons/md";
 // import { BsArrowRepeat } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import auth from "../../firbaseConfig";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSendEmailVerification,
+} from "react-firebase-hooks/auth";
 
 const Register = () => {
   // FOR REGISTRATIONS
+  const [sendEmailVerification] = useSendEmailVerification(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const handleRegistration = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -19,9 +23,6 @@ const Register = () => {
     const password = e.target.password.value;
     // const confirmPassword = e.target.repassword.value;
     createUserWithEmailAndPassword(email, password);
-    if (user) {
-      console.log(user);
-    }
   };
 
   return (
@@ -91,7 +92,7 @@ const Register = () => {
               className=""
             />
           </div> */}
-          <span className="text-danger fs-4 mt-5">
+          <span className="text-danger  mt-5">
             {error ? error.message : ""}
           </span>
           {/* input groups here */}

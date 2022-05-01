@@ -2,9 +2,30 @@ import React from "react";
 import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import logo from "../../imges/logo5.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../firbaseConfig";
+import { async } from "@firebase/util";
 
 const Login = () => {
+  const navigate = useNavigate();
+  // for login
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    await signInWithEmailAndPassword(email, password);
+  };
+  if (loading) {
+    return <p>loding</p>;
+  }
+  if (user) {
+    navigate("/");
+  }
+
   return (
     <section className="authentication">
       {/* titlle here */}
@@ -19,7 +40,7 @@ const Login = () => {
         <h3 className="text-center text-light fs-1 my-5">
           <i>LOGIN</i>
         </h3>
-        <form className=" w-75 mx-auto ">
+        <form onSubmit={handleLogin} className=" w-75 mx-auto ">
           {/* input groups here */}
           <div className="input-group d-flex align-items-center">
             <span className="icons">
@@ -47,7 +68,9 @@ const Login = () => {
             />
           </div>
 
-          <span className="text-danger fs-4 mt-5">Error</span>
+          <span className="text-danger  mt-5">
+            {error ? error.message : ""}
+          </span>
           {/* input groups here */}
           <div className="input-group d-flex align-items-center">
             <input
