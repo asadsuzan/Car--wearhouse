@@ -8,32 +8,28 @@ const Inventory = () => {
   const [item, setItem] = useState({});
   const [itemQunatity, setIemQunatity] = useState();
 
+  // decrease quantity
+  const handleDelevered = () => {
+    if (itemQunatity <= 0) {
+      setIemQunatity(0);
+      alert("Not in stocks,Restocks to Delever");
+      return;
+    }
+    setIemQunatity(parseInt(itemQunatity) - 1);
+  };
+
   // increase quantity
   const handleRestocks = (e) => {
     e.preventDefault();
     const quantity = e.target.quantity.value;
     const newQuantity = parseInt(quantity) + parseInt(itemQunatity);
+    if (newQuantity <= 0) {
+      alert("Please Enter Valid quantity");
+      e.target.reset();
+      return;
+    }
     setIemQunatity(newQuantity);
-
-    // test
-    // const url = `http://localhost:5000/cars/home/${id}`;
-    // fetch(url, {
-    //   method: "PUT",
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     id: id,
-    //     name: item.name,
-    //     price: item.price,
-    //     des: item.des,
-    //     quantity: 0,
-    //     supplier: item.supplier,
-    //     img: item.img,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
+    e.target.reset();
   };
   // update items quntity
   useEffect(() => {
@@ -91,7 +87,9 @@ const Inventory = () => {
             <h3>
               <i>Stokes: {itemQunatity}</i>
             </h3>
-            <button className="deleverd-btn">Deleverd</button>
+            <button onClick={handleDelevered} className="deleverd-btn">
+              Deleverd
+            </button>
             <form
               onSubmit={handleRestocks}
               className="d-flex flex-column mt-3"
@@ -102,6 +100,7 @@ const Inventory = () => {
                   restock the item
                 </label>
                 <input
+                  placeholder="Quantity"
                   type="number"
                   name="quantity"
                   required
