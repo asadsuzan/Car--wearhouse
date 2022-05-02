@@ -10,6 +10,8 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firbaseConfig";
 import { Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
+
 const Login = () => {
   let navigate = useNavigate();
   let location = useLocation();
@@ -38,6 +40,7 @@ const Login = () => {
   }
   // navigation
   if (logedUser || user) {
+    toast("LOGIN SUCCESS");
     navigate(from, { replace: true });
   }
 

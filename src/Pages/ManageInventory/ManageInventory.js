@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./ManageInventory.css";
 
 const ManageInventory = () => {
@@ -14,12 +15,16 @@ const ManageInventory = () => {
 
   // delet item
   const handleRemoveItem = (id) => {
-    const url = `http://localhost:5000/cars/all/${id}`;
-    fetch(url, {
-      method: "DELETE",
-    });
-    const remainingItems = items.filter((item) => item._id !== id);
-    setItems(remainingItems);
+    const confirm = window.confirm("Are You Sure?");
+    if (confirm) {
+      const url = `http://localhost:5000/cars/all/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      });
+      const remainingItems = items.filter((item) => item._id !== id);
+      setItems(remainingItems);
+      toast("DELETED SUCCESSFULL");
+    }
   };
 
   // load all items

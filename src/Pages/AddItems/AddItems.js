@@ -7,6 +7,7 @@ import { HiOutlinePencilAlt } from "react-icons/hi";
 import { BsFillImageFill, BsCurrencyDollar } from "react-icons/bs";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firbaseConfig";
+import { toast } from "react-toastify";
 
 const AddItems = () => {
   const [user] = useAuthState(auth);
@@ -37,6 +38,8 @@ const AddItems = () => {
         author,
       }),
     });
+    toast("ITEM ADDED SUCCESSFULL");
+    e.target.reset();
   };
 
   return (

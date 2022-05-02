@@ -13,6 +13,7 @@ import {
   useSendEmailVerification,
 } from "react-firebase-hooks/auth";
 import { Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 const Register = () => {
   let navigate = useNavigate();
@@ -45,7 +46,8 @@ const Register = () => {
     );
   }
   // navigation
-  if (logedUser) {
+  if (logedUser || user) {
+    toast("REGISTRATION SUCCESSFULL");
     navigate(from, { replace: true });
   }
 
