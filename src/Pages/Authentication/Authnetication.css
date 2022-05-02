@@ -25,7 +25,7 @@
     border: 1px solid orangered;
     margin-bottom: 1rem;
 }
-.input-group input{
+.input-group input,textarea{
     flex: 1;
     padding: 8px;
     border: none;

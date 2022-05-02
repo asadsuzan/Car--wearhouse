@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import "./ManageInventory.css";
 
 const ManageInventory = () => {
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
 
+  // initila count for table row number
   let x = 0;
 
   // delet item
@@ -27,11 +30,12 @@ const ManageInventory = () => {
   }, []);
 
   return (
-    <section className="manage-inventory">
+    <section className="manage-inventory" style={{ minHeight: "80vh" }}>
       <div className="container">
         <div className="d-flex justify-content-between align-items-center my-5">
           <div className="fs-3 ">All The Items You Are Managing</div>
           <div
+            onClick={() => navigate("/add_items")}
             className="bg-orangered text-light shadow-lg p-2"
             style={{ cursor: "pointer" }}
           >

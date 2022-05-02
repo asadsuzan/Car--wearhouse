@@ -26,14 +26,14 @@ const Header = () => {
               </Nav.Link>
               {/* conditionaly show routes */}
               {user ? (
-                <Nav.Link as={Link} to="/login" className="text-light">
+                <Nav.Link as={Link} to="/my_items" className="text-light">
                   My Items
                 </Nav.Link>
               ) : (
                 ""
               )}
               {user ? (
-                <Nav.Link as={Link} to="/login" className="text-light">
+                <Nav.Link as={Link} to="/add_items" className="text-light">
                   Add Items
                 </Nav.Link>
               ) : (
