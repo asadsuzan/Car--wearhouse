@@ -6,8 +6,19 @@ import "./ManageInventory.css";
 
 const ManageInventory = () => {
   const [items, setItems] = useState([]);
-  console.log(items);
+
   let x = 0;
+
+  // delet item
+  const handleRemoveItem = (id) => {
+    const url = `http://localhost:5000/cars/all/${id}`;
+    fetch(url, {
+      method: "DELETE",
+    });
+    const remainingItems = items.filter((item) => item._id !== id);
+    setItems(remainingItems);
+  };
+
   // load all items
   useEffect(() => {
     fetch("http://localhost:5000/cars/all")
@@ -44,9 +55,9 @@ const ManageInventory = () => {
           </thead>
           <tbody>
             {items.map((item) => {
-              const { name, img, supplier, quantity, price } = item;
+              const { name, img, supplier, quantity, price, _id } = item;
               return (
-                <tr>
+                <tr key={_id}>
                   <td>{(x = x + 1)}</td>
                   <td>
                     <img src={img} alt="pd" width={"50px"} />
@@ -56,7 +67,10 @@ const ManageInventory = () => {
                   <td>{quantity}</td>
                   <td>{price}</td>
                   <td title="REMOVE ITEM">
-                    <button className="text-danger border-0 delet-btn">
+                    <button
+                      onClick={() => handleRemoveItem(_id)}
+                      className="text-danger border-0 delet-btn"
+                    >
                       {" "}
                       <AiFillDelete />
                     </button>
