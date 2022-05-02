@@ -34,6 +34,7 @@ const ManageInventory = () => {
         <Table hover bordered className="my-5">
           <thead className="shadow-lg">
             <tr>
+              <th>#</th>
               <th>Item</th>
               <th>Supplier</th>
               <th>Quantity</th>
@@ -46,6 +47,7 @@ const ManageInventory = () => {
               const { name, img, supplier, quantity, price } = item;
               return (
                 <tr>
+                  <td>{(x = x + 1)}</td>
                   <td>
                     <img src={img} alt="pd" width={"50px"} />
                     <span className="pe-2"> {name}</span>
