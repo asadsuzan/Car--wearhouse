@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { GrUpdate } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
-
+import { AiFillCar } from "react-icons/ai";
+import { IoIosPeople } from "react-icons/io";
+import { GiShakingHands } from "react-icons/gi";
 const Home = () => {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
@@ -62,6 +64,7 @@ const Home = () => {
           })}
         </div>
       </div>
+      {/* navigato to manage inventory page */}
       <div className="text-center">
         <button
           onClick={() => navigate("/inventory")}
@@ -69,6 +72,34 @@ const Home = () => {
         >
           Manage Inventories
         </button>
+      </div>
+      {/* overvew about total vehicles,sells,stocks,customer */}
+      <div className="container-fluid overview mt-5">
+        <div className="row align-items-center justify-content-center w-100 text-center h-100">
+          <div className="col-lg-4 col-md-4 col-sm-4 col-12 text-light">
+            <div>
+              {" "}
+              <AiFillCar className="fs-1" />
+            </div>
+            <div className="mt-2 fs-3">VEHICLES</div>
+          </div>
+          <div className="col-lg-4 col-md-4 col-sm-4 col-12 text-light">
+            {" "}
+            <div>
+              {" "}
+              <IoIosPeople className="fs-1" />
+            </div>
+            <div className="mt-2 fs-3">CUSTOMERS</div>
+          </div>
+          <div className="col-lg-4 col-md-4 col-sm-4 col-12 text-light">
+            {" "}
+            <div>
+              {" "}
+              <GiShakingHands className="fs-1" />
+            </div>
+            <div className="mt-2 fs-3">SUPPLIER</div>
+          </div>
+        </div>
       </div>
     </section>
   );
