@@ -64,7 +64,7 @@ const Inventory = () => {
   }, [id]);
   return (
     <section className="singl-item my-5">
-      <div className="container">
+      <div className="container" style={{ marginBottom: "4rem" }}>
         {/* for item img */}
         <div>
           <img src={item.img} alt={item.name} />

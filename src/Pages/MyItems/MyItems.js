@@ -1,3 +1,4 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
@@ -8,12 +9,21 @@ const MyItems = () => {
   const [items, setItems] = useState([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+
   // load items by author
   useEffect(() => {
-    const url = `http://localhost:5000/cars/myitems?author=${user?.email}`;
+    const accessToken = localStorage.getItem("access_token");
+    const url = `http://localhost:5000/cars/myitems?author=${user?.email}&access_token=${accessToken}`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => setItems(data));
+      .then((data) => {
+        // chek if token not valid
+        if (data.message) {
+          signOut(auth);
+        } else {
+          setItems(data);
+        }
+      });
   }, [user]);
 
   return (

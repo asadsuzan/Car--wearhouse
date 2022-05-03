@@ -35,7 +35,7 @@ const ManageInventory = () => {
   }, []);
 
   return (
-    <section className="manage-inventory" style={{ minHeight: "80vh" }}>
+    <section className="manage-inventory">
       <div className="container">
         <div className="d-flex justify-content-between align-items-center my-5">
           <div className="fs-3 ">All The Items You Are Managing</div>
