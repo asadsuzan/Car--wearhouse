@@ -11,6 +11,7 @@ import {
 import auth from "../../firbaseConfig";
 import { Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
+import Social from "./Social";
 
 const Login = () => {
   let navigate = useNavigate();
@@ -129,6 +130,7 @@ const Login = () => {
           </div>
         </form>
       </div>
+      <Social />
     </section>
   );
 };

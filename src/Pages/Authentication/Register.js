@@ -14,6 +14,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
+import Social from "./Social";
 
 const Register = () => {
   let navigate = useNavigate();
@@ -46,9 +47,24 @@ const Register = () => {
     );
   }
   // navigation
+  // navigation
   if (logedUser || user) {
-    toast("REGISTRATION SUCCESSFULL");
-    navigate(from, { replace: true });
+    const url = `http://localhost:5000/signin`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: user?.user?.email,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("access_token", data.token);
+        toast("LOGIN SUCCESS");
+        navigate(from, { replace: true });
+      });
   }
 
   return (
@@ -143,6 +159,7 @@ const Register = () => {
           </div>
         </form>
       </div>
+      <Social />
     </section>
   );
 };

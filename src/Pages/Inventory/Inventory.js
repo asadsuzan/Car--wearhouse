@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { GrView } from "react-icons/gr";
 import "./Inventory.css";
 
@@ -65,6 +65,9 @@ const Inventory = () => {
   return (
     <section className="singl-item my-5">
       <div className="container" style={{ marginBottom: "4rem" }}>
+        <Link className="fs-4" to={"/inventory"}>
+          Manage Inventory
+        </Link>
         {/* for item img */}
         <div>
           <img src={item.img} alt={item.name} />

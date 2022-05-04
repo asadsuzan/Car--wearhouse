@@ -54,7 +54,7 @@ const AddItems = () => {
       {/* add item form */}
       <div className="container mt-5">
         <div onSubmit={handleAddItem} className="from-wraper">
-          <form className="w-50 mx-auto">
+          <form className=" mx-auto">
             {/* input groups */}
             <div className="input-group">
               <span className="icons">

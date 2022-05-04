@@ -4,11 +4,28 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firbaseConfig";
 import "./MyItems.css";
+import { GrUpdate } from "react-icons/gr";
+import { AiFillDelete } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const MyItems = () => {
   const [items, setItems] = useState([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+
+  // delet item
+  const handleRemoveItem = (id) => {
+    const confirm = window.confirm("Are You Sure?");
+    if (confirm) {
+      const url = `http://localhost:5000/cars/all/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      });
+      const remainingItems = items.filter((item) => item._id !== id);
+      setItems(remainingItems);
+      toast("DELETED SUCCESSFULL");
+    }
+  };
 
   // load items by author
   useEffect(() => {
@@ -58,8 +75,15 @@ const MyItems = () => {
                       onClick={() => navigate(`/inventory/${_id}`)}
                       className="update-btn px-3  py-2"
                     >
-                      {/* <GrUpdate className="text-light" /> */}
+                      <GrUpdate className="text-light" />
                       <span>Update</span>
+                    </button>
+                    <button
+                      onClick={() => handleRemoveItem(_id)}
+                      className="update-btn mt-2 px-3 py-2"
+                    >
+                      <AiFillDelete />
+                      <span> DELETE</span>
                     </button>
                   </div>
                 </div>
