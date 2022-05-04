@@ -17,7 +17,7 @@ const ManageInventory = () => {
   const handleRemoveItem = (id) => {
     const confirm = window.confirm("Are You Sure?");
     if (confirm) {
-      const url = `http://localhost:5000/cars/all/${id}`;
+      const url = `https://lit-headland-86154.herokuapp.com/cars/all/${id}`;
       fetch(url, {
         method: "DELETE",
       });
@@ -29,7 +29,7 @@ const ManageInventory = () => {
 
   // load all items
   useEffect(() => {
-    fetch("http://localhost:5000/cars/all")
+    fetch("https://lit-headland-86154.herokuapp.com/cars/all")
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);

@@ -23,7 +23,7 @@ const AddItems = () => {
     const img = e.target.link.value;
     const des = e.target.des.value;
     // console.log({ name, supplier, quantity, price, img, des });
-    fetch("http://localhost:5000/cars/all", {
+    fetch("https://lit-headland-86154.herokuapp.com/cars/all", {
       method: "POST",
       headers: {
         "content-type": "application/json",

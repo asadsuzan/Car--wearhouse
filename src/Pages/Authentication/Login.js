@@ -41,7 +41,7 @@ const Login = () => {
   }
   // navigation
   if (logedUser || user) {
-    const url = `http://localhost:5000/signin`;
+    const url = `https://lit-headland-86154.herokuapp.com/signin`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
@@ -126,7 +126,9 @@ const Login = () => {
               {" "}
               New To Car Manager? <Link to={"/register"}>REGISTER NOW</Link>
             </span>
-            <span>Forgot Password?</span>
+            <span>
+              <Link to="/forgot-password">Forgot Password?</Link>
+            </span>
           </div>
         </form>
       </div>

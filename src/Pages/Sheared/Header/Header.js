@@ -39,6 +39,10 @@ const Header = () => {
               ) : (
                 ""
               )}
+              <Nav.Link as={Link} to="/blog" className="text-light">
+                Blog
+              </Nav.Link>
+
               {user ? (
                 <button
                   onClick={() => signOut(auth)}

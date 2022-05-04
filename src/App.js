@@ -12,6 +12,8 @@ import MyItems from "./Pages/MyItems/MyItems";
 import Footer from "./Pages/Sheared/Footer/Footer";
 import Header from "./Pages/Sheared/Header/Header";
 import "react-toastify/dist/ReactToastify.css";
+import ResetPass from "./Pages/Authentication/ResetPass";
+import Blogs from "./Pages/Blogs/Blogs";
 
 function App() {
   return (
@@ -52,7 +54,9 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/blog" element={<Blogs />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ResetPass />} />
       </Routes>
       <Footer />
       <ToastContainer />

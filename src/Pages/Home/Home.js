@@ -13,7 +13,7 @@ const Home = () => {
 
   // load items from server
   useEffect(() => {
-    fetch("http://localhost:5000/cars/home")
+    fetch("https://lit-headland-86154.herokuapp.com/cars/home")
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);

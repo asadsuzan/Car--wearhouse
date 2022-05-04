@@ -33,7 +33,7 @@ const Inventory = () => {
   };
   // update items quntity
   useEffect(() => {
-    const url = `http://localhost:5000/cars/home/${id}`;
+    const url = `https://lit-headland-86154.herokuapp.com/cars/home/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -54,7 +54,7 @@ const Inventory = () => {
 
   //   load items by id
   useEffect(() => {
-    const url = `http://localhost:5000/cars/home/${id}`;
+    const url = `https://lit-headland-86154.herokuapp.com/cars/home/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

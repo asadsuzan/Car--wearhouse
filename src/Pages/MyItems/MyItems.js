@@ -17,7 +17,7 @@ const MyItems = () => {
   const handleRemoveItem = (id) => {
     const confirm = window.confirm("Are You Sure?");
     if (confirm) {
-      const url = `http://localhost:5000/cars/all/${id}`;
+      const url = `https://lit-headland-86154.herokuapp.com/cars/all/${id}`;
       fetch(url, {
         method: "DELETE",
       });
@@ -30,7 +30,7 @@ const MyItems = () => {
   // load items by author
   useEffect(() => {
     const accessToken = localStorage.getItem("access_token");
-    const url = `http://localhost:5000/cars/myitems?author=${user?.email}&access_token=${accessToken}`;
+    const url = `https://lit-headland-86154.herokuapp.com/cars/myitems?author=${user?.email}&access_token=${accessToken}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
