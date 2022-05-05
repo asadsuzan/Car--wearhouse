@@ -6,7 +6,7 @@ const Footer = () => {
     <footer
       className="container-fluid  fw-bolder"
       style={{
-        background: "#ffc7b3",
+        background: "",
         minHeight: "300px",
       }}
     >

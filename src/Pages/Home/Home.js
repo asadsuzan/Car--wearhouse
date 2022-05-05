@@ -136,7 +136,7 @@ const Home = () => {
         </button>
       </div>
       {/* overvew about total vehicles,sells,stocks,customer */}
-      <div className="container-fluid overview mt-5">
+      <div className="container-fluid overview my-5">
         <div className="row align-items-center justify-content-center w-100 text-center py-5">
           <div className="col-lg-4 col-md-4 col-sm-4 col-12 text-light">
             <div>

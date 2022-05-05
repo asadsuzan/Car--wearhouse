@@ -14,6 +14,7 @@ import Header from "./Pages/Sheared/Header/Header";
 import "react-toastify/dist/ReactToastify.css";
 import ResetPass from "./Pages/Authentication/ResetPass";
 import Blogs from "./Pages/Blogs/Blogs";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
         <Route path="/blog" element={<Blogs />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ResetPass />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <ToastContainer />
