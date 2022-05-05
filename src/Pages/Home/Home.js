@@ -7,6 +7,7 @@ import { IoIosPeople } from "react-icons/io";
 import { GiShakingHands } from "react-icons/gi";
 import { BsBox } from "react-icons/bs";
 import about from "../../imges/about1.png";
+import { Spinner } from "react-bootstrap";
 const Home = () => {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
@@ -17,7 +18,17 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);
-
+  // loading spiner
+  // if (items.length <= 0) {
+  //   return (
+  //     <div
+  //       className="d-flex justify-content-center align-items-center"
+  //       style={{ height: "100vh" }}
+  //     >
+  //       <Spinner animation="grow" variant="warning" />
+  //     </div>
+  //   );
+  // }
   return (
     <section>
       {/* banner here */}
@@ -90,6 +101,16 @@ const Home = () => {
       <div className="container my-5 py-5">
         <h3 className="my-5">Recently Listed Vehicles</h3>
         <div className="inventory-items ">
+          {items.length ? (
+            ""
+          ) : (
+            <div
+              className="d-flex justify-content-center align-items-center"
+              style={{ height: "100vh" }}
+            >
+              <Spinner animation="grow" variant="warning" />
+            </div>
+          )}
           {items.map((item) => {
             const { name, img, des, price, quantity, supplier, _id } = item;
             return (
