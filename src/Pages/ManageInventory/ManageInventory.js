@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
+import { Spinner, Table } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
@@ -63,6 +63,16 @@ const ManageInventory = () => {
             </tr>
           </thead>
           <tbody>
+            {items.length ? (
+              ""
+            ) : (
+              <div
+                className="d-flex justify-content-center align-items-center"
+                style={{ height: "100vh" }}
+              >
+                <Spinner animation="grow" variant="warning" />
+              </div>
+            )}
             {items.map((item) => {
               const { name, img, supplier, quantity, price, _id } = item;
               return (
