@@ -88,7 +88,17 @@ const Inventory = () => {
           </div>
           <div className="col-lg-4 col-md-4 col-12">
             <h3>
-              <i>Stokes: {itemQunatity}</i>
+              <i className={itemQunatity ? "" : "text-line"}>
+                Stokes: {itemQunatity}
+              </i>
+              <sup
+                className={`shadow-lg  text-danger px-2 ${
+                  itemQunatity ? "text-line" : ""
+                }`}
+                style={{ fontSize: "15px" }}
+              >
+                sold out
+              </sup>
             </h3>
             <button onClick={handleDelevered} className="deleverd-btn">
               Deleverd

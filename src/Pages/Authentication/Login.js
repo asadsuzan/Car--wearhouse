@@ -22,11 +22,11 @@ const Login = () => {
   // for login
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    await signInWithEmailAndPassword(email, password);
+    signInWithEmailAndPassword(email, password);
   };
   // loading spiner
   if (loading) {
