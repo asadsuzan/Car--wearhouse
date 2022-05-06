@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GrView } from "react-icons/gr";
 import "./Inventory.css";
+import { Spinner } from "react-bootstrap";
 
 const Inventory = () => {
   const { id } = useParams();
@@ -62,6 +63,19 @@ const Inventory = () => {
         setIemQunatity(data.quantity);
       });
   }, [id]);
+
+  // loading spiner
+  if (Object.keys(item).length === 0) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
+        <Spinner animation="grow" variant="warning" />
+      </div>
+    );
+  }
+
   return (
     <section className="singl-item my-5">
       <div className="container" style={{ marginBottom: "4rem" }}>
