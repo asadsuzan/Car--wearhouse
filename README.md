@@ -18,6 +18,10 @@
 - Node Js
 - Express Js
 
+#### Database
+
+- Mongodb
+
 #### for Authentication
 
 - Firebase
