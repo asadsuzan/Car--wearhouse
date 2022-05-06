@@ -33,6 +33,17 @@ const ManageInventory = () => {
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);
+  // loading spiner
+  if (items.length <= 0) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
+        <Spinner animation="grow" variant="warning" />
+      </div>
+    );
+  }
 
   return (
     <section className="manage-inventory">
@@ -63,16 +74,6 @@ const ManageInventory = () => {
             </tr>
           </thead>
           <tbody>
-            {items.length ? (
-              ""
-            ) : (
-              <div
-                className="d-flex justify-content-center align-items-center"
-                style={{ height: "100vh" }}
-              >
-                <Spinner animation="grow" variant="warning" />
-              </div>
-            )}
             {items.map((item) => {
               const { name, img, supplier, quantity, price, _id } = item;
               return (
