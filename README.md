@@ -29,4 +29,4 @@
 
 ## About
 
-this can be used for Wearhouse management. You can calculate your sales, delivery, stokes. there are is a list of all inventory items. another route for add inventory items. Can delete or update any item.
+this is about Wearhouse management website. You can calculate your sales, delivery, stokes. there are is a list of all inventory items. another route for add inventory items. Can delete or update any item.
