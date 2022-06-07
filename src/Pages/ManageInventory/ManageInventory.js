@@ -49,10 +49,10 @@ const ManageInventory = () => {
     <section className="manage-inventory">
       <div className="container">
         <div className="d-flex justify-content-between align-items-center my-5">
-          <div className="fs-3 ">All The Items You Are Managing</div>
+          <div className="fs-3">All The Items You Are Managing</div>
           <div
             onClick={() => navigate("/add_items")}
-            className="bg-orangered text-light shadow-lg p-2"
+            className="bg-orangered rounded-3 text-light shadow-lg p-2"
             style={{ cursor: "pointer" }}
           >
             <BsPlusLg />

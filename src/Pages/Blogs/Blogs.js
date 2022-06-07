@@ -91,9 +91,6 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div className="text-center ">
-        <button className="bg-orangered border-0 text-light">VIEW MORE</button>
-      </div>
     </div>
   );
 };

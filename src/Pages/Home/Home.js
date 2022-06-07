@@ -98,7 +98,7 @@ const Home = () => {
         </div>
       </div>
       {/* inventoy items here */}
-      <div className="container my-5 py-5">
+      <div className="container mt-5 pt-5">
         <h3 className="my-5">Recently Listed Vehicles</h3>
         <div className="inventory-items ">
           {items.length ? (
@@ -134,7 +134,7 @@ const Home = () => {
                       <h4 className="item-price">${price}</h4>
                       <button
                         onClick={() => navigate(`/inventory/${_id}`)}
-                        className="update-btn px-3  py-2"
+                        className="update-btn px-3  py-2 rounded-3"
                       >
                         <GrUpdate className="text-light" />
                         <span>Update</span>
@@ -151,7 +151,7 @@ const Home = () => {
       <div className="text-center">
         <button
           onClick={() => navigate("/inventory")}
-          className="h-navigate-btn p-2"
+          className="h-navigate-btn p-2 rounded-3 fw-bold"
         >
           Manage Inventories
         </button>

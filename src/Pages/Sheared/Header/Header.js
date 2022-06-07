@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firbaseConfig";
 import logo from "../../../imges/logo.png";
+import "./Header.css";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -46,7 +47,7 @@ const Header = () => {
               {user ? (
                 <button
                   onClick={() => signOut(auth)}
-                  className="shadow-lg border-0 text-uppercase text-light fw-bold"
+                  className="shadow-lg border-0 rounded-3 text-uppercase text-light fw-bold"
                   style={{ background: "#992900" }}
                 >
                   Signout
