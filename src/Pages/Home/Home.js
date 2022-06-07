@@ -18,23 +18,13 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);
-  // loading spiner
-  // if (items.length <= 0) {
-  //   return (
-  //     <div
-  //       className="d-flex justify-content-center align-items-center"
-  //       style={{ height: "100vh" }}
-  //     >
-  //       <Spinner animation="grow" variant="warning" />
-  //     </div>
-  //   );
-  // }
+
   return (
     <section>
       {/* banner here */}
       <div className="h-banner container-fluid d-flex justify-content-center align-items-center ">
         <h1 className="h-banner-title display-3 text-uppercase text-center text-light">
-          the car manager wearhouse <br /> limited{" "}
+          the car manager warehouse <br /> limited{" "}
         </h1>
       </div>
       {/* about section here */}
@@ -97,7 +87,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* inventoy items here */}
+      {/* inventory items here */}
       <div className="container mt-5 pt-5">
         <h3 className="my-5">Recently Listed Vehicles</h3>
         <div className="inventory-items ">
@@ -147,7 +137,7 @@ const Home = () => {
           })}
         </div>
       </div>
-      {/* navigato to manage inventory page */}
+      {/* navigate to manage inventory page */}
       <div className="text-center">
         <button
           onClick={() => navigate("/inventory")}
@@ -156,7 +146,7 @@ const Home = () => {
           Manage Inventories
         </button>
       </div>
-      {/* overvew about total vehicles,sells,stocks,customer */}
+      {/* overview about total vehicles,sells,stocks,customer */}
       <div className="container-fluid overview my-5">
         <div className="row align-items-center justify-content-center w-100 text-center py-5">
           <div className="col-lg-4 col-md-4 col-sm-4 col-12 text-light">

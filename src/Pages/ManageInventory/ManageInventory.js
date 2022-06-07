@@ -31,7 +31,11 @@ const ManageInventory = () => {
   useEffect(() => {
     fetch("https://lit-headland-86154.herokuapp.com/cars/all")
       .then((res) => res.json())
-      .then((data) => setItems(data));
+      .then((data) => {
+        // reverse loaded data to display items last to first
+        const newItems = data.reverse();
+        setItems(newItems);
+      });
   }, []);
   // loading spiner
   if (items.length <= 0) {

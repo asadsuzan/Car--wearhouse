@@ -38,7 +38,7 @@ const MyItems = () => {
         if (data.message) {
           signOut(auth);
         } else {
-          setItems(data);
+          setItems(data.reverse());
         }
       });
   }, [user]);
