@@ -1,32 +1,32 @@
-# Car Manager
+## Warehouse management website
 
-## LIVE LINK
+### [Live Preview](https://car-manager-e5d34.web.app/)
 
-[car-maneger](https://car-manager-e5d34.web.app/)
+### `Brief`
 
-# Used Technologies
+The challenge is to building a MERN-STACK Warehouse management website. Where authorized users can manage his Warehouse. E.g > add-product,remove-product,update-product,deliver-product
 
-#### for client site
+### `Features`
 
-- React
-- React-bootstrap
-- React-icons
-- React-tostyfy
+- Beautiful UI with ReactJs
+- Applied NodeJS To Generate Rest API
+- Add Product
+- Update Product
+- Remove Product
+- Deliver Product
 
-#### for server site
+### `Technologies`
 
-- Node Js
-- Express Js
+- ReactJs
+- React Bootstrap
+- Firebase Authentication
+- React Tostify
+- React router dom
 
-#### Database
+#### `Ask Suzan for More Details`
 
-- Mongodb
+Email: asadsuzan7@gmail.com
 
-#### for Authentication
+Linkedin: [asadsuzan](https://www.linkedin.com/in/asadsuzan/)
 
-- Firebase
-- React-firebase-hooks
-
-## About
-
-this is about Wearhouse management website. You can calculate your sales, delivery, stokes. there are is a list of all inventory items. another route for add inventory items. Can delete or update any item.
+Whatsapp: [+88 01614010594](https://wa.me/message/46YDVA5OUV5RC1)
